@@ -10,18 +10,20 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require rails-ujs
 //= require jquery3
 //= require popper
 //= require bootstrap
-//= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
 
 
 $(function () {
-  $.each($('.nav').find('li'), function () {
-    $(this).toggleClass('active',
-      $(this).find('a').attr('href') == window.location.pathname);
-  });
+    let pathname = window.location.pathname;
+    $('li.nav-item').removeClass('active');
+    if(pathname == '/users/sign_in') {
+        console.log('aa')
+        $('li.nav-login').addClass('active');
+    }
 });

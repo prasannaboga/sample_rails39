@@ -1,11 +1,19 @@
-default: &mysqldefault
+mysqldefault: &mysqldefault
   adapter: mysql2
   timeout: 5000
   pool: 5
-
-
-development:
-  <<: *mysqldefault
   username: root
   password: seneca123$
+
+
+postgresqldefault: &postgresqldefault
+  adapter: postgresql
+  encoding: unicode
+  timeout: 5000
+  pool: 5
+  username: appuser
+  password: appuserpwd
+
+development:
+  <<: *postgresqldefault
   database: sample_rails39_development

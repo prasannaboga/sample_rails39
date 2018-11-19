@@ -7,7 +7,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'ordinare', '~> 0.4.0'
-gem 'mysql2'
+# gem 'mysql2'
+gem 'pg'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.1'
 gem 'redis', '~> 4.0'
@@ -20,6 +21,8 @@ gem 'haml', '5.0.4'
 gem 'bootstrap', '4.1.3'
 gem 'jquery-rails'
 gem 'popper_js', '~> 1.14.3'
+gem 'pry-rails'
+gem 'pry-doc'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
