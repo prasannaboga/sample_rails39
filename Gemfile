@@ -23,6 +23,7 @@ gem 'jquery-rails'
 gem 'popper_js', '~> 1.14.3'
 gem 'pry-rails'
 gem 'pry-doc'
+gem 'faker'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
