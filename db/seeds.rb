@@ -3,7 +3,9 @@
 
 # Create users records
 
-1_000.times do |i|
+User.destroy_all
+
+1.times do |i|
     begin
         user = User.new
         user.username = "user_#{i}"
@@ -24,10 +26,23 @@
         user.created_at = Faker::Time.between(365.days.ago, 300.days.ago)
         user.updated_at = Faker::Time.between(65.days.ago, DateTime.now)
 
-        user.save!()
+        user.build_profile(
+            first_name: Faker::Name.first_name,
+            last_name: Faker::Name.last_name,
+            dob: Faker::Date.birthday(min_age = 19, 65),
+            created_at: user.created_at,
+            updated_at: Faker::Time.between(user.created_at, DateTime.now)
+        )
 
-        puts("Created user record - #{user.username}")
+        if user.save()
+            puts("Created user record - #{user.username}")
+        else
+            print(user.errors.full_messages)
+        end
+
+
     rescue Exception => ex
         puts("Failed to create user record - #{ex.message}")
+        puts(ex.backtrace)
     end
 end
