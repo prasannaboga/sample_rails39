@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_06_180616) do
+ActiveRecord::Schema.define(version: 2018_12_08_054000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "building_number"
+    t.string "secondary_address"
+    t.string "street_name"
+    t.string "street_address"
+    t.string "area_location"
+    t.string "postal_code"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["latitude", "longitude"], name: "index_addresses_on_latitude_and_longitude"
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.bigint "user_id"
@@ -23,6 +39,11 @@ ActiveRecord::Schema.define(version: 2018_11_06_180616) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "testing_table", id: false, force: :cascade do |t|
+    t.string "settings_name", limit: 140
+    t.json "settings_value"
   end
 
   create_table "users", force: :cascade do |t|

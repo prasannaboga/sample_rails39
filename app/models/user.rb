@@ -36,5 +36,6 @@ class User < ApplicationRecord
               uniqueness: true, allow_blank: false, allow_nil: false
 
     has_one :profile, dependent: :destroy
+    has_many :addresses, dependent: :destroy
 
 end
