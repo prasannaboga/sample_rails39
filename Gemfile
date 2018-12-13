@@ -24,6 +24,9 @@ gem 'popper_js', '~> 1.14.3'
 gem 'pry-rails'
 gem 'pry-doc'
 gem 'faker'
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+gem 'progress_bar'
 
 group :development, :test do
     gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

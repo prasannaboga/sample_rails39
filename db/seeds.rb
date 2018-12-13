@@ -5,7 +5,7 @@
 
 User.destroy_all
 
-1.times do |i|
+1_000.times do |i|
     begin
         user = User.new
         user.username = "user_#{i}"
@@ -32,6 +32,21 @@ User.destroy_all
             dob: Faker::Date.birthday(min_age = 19, 65),
             created_at: user.created_at,
             updated_at: Faker::Time.between(user.created_at, DateTime.now)
+        )
+
+        user.addresses.build(
+            building_number: Faker::Address.building_number,
+            secondary_address: Faker::Address.secondary_address,
+            street_name: Faker::Address.street_name,
+            street_address: Faker::Address.street_address,
+            area_location: Faker::Address.community,
+            postal_code: Faker::Address.postcode,
+            latitude: Faker::Address.latitude,
+            longitude: Faker::Address.longitude,
+            extras: {
+                'one': 1,
+                'two': 2
+            }
         )
 
         if user.save()

@@ -5,6 +5,7 @@
 #  id                :bigint(8)        not null, primary key
 #  area_location     :string
 #  building_number   :string
+#  extras            :jsonb
 #  latitude          :float
 #  longitude         :float
 #  postal_code       :string

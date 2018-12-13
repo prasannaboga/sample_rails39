@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2018_12_08_054000) do
     t.string "postal_code"
     t.float "latitude"
     t.float "longitude"
+    t.jsonb "extras"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["latitude", "longitude"], name: "index_addresses_on_latitude_and_longitude"

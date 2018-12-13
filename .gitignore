@@ -33,3 +33,6 @@
 /.idea
 
 sample_code.rb
+/solr/default/data/*
+/solr/development/data/*
+/solr/test/data/*

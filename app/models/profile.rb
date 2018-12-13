@@ -3,10 +3,9 @@
 # Table name: profiles
 #
 #  id         :bigint(8)        not null, primary key
-#  user_id    :bigint(8)
+#  dob        :date
 #  first_name :string
 #  last_name  :string
-#  dob        :date
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :bigint(8)
@@ -19,4 +18,21 @@
 class Profile < ApplicationRecord
 
     belongs_to :user
+
+    searchable do
+        text :first_name, :last_name, :full_name
+        text :email do
+          user.email
+        end
+
+        time :dob
+        time :created_at
+        time :updated_at
+
+        integer :user_id
+    end
+
+    def full_name
+        "#{first_name} #{last_name}"
+    end
 end

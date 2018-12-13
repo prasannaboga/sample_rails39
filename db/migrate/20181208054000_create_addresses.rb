@@ -10,6 +10,7 @@ class CreateAddresses < ActiveRecord::Migration[5.2]
             t.string :postal_code
             t.float :latitude
             t.float :longitude
+            t.jsonb :extras
 
             t.timestamps
         end
