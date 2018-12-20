@@ -33,6 +33,7 @@ class Address < ApplicationRecord
     mapping do
         indexes :id, type: 'long'
         indexes :user_id, type: 'long'
+        indexes :secondary_address, type: 'text'
         indexes :coordinates, type: 'geo_point'
     end
 

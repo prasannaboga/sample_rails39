@@ -1,4 +1,5 @@
 puts("This is sample code for es profile")
+puts(Elasticsearch::Model.client.transport.hosts)
 
 # profiles = ProfileEs.search('robert', size: 10).records
 # puts("###")
@@ -15,7 +16,7 @@ search_json = {
             },
             filter: {
                 geo_distance: {
-                    distance: "2000km",
+                    distance: "100km",
                     coordinates: {
                         lat: 68.8520486112015,
                         lon: -76.0421847620266

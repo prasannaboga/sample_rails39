@@ -3,7 +3,8 @@
 require 'faraday_middleware/aws_signers_v4'
 
 Elasticsearch::Model.client = Elasticsearch::Client.new({
-  log: true
+  log: true,
+  url: 'https://search-prasannaboga-opqiiflhxxfwr5jmxxko5sxrpe.us-east-1.es.amazonaws.com/'
 }) do |f|
   f.request(
     :aws_signers_v4,
