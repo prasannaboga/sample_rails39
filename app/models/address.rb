@@ -22,8 +22,22 @@
 #  index_addresses_on_user_id                 (user_id)
 #
 
+require 'elasticsearch/model'
+
 class Address < ApplicationRecord
+    include Elasticsearch::Model
+    include Elasticsearch::Model::Callbacks
 
     belongs_to :user
+
+    mapping do
+        indexes :id, type: 'long'
+        indexes :user_id, type: 'long'
+        indexes :coordinates, type: 'geo_point'
+    end
+
+    def as_indexed_json(options = {})
+        as_json().merge(coordinates: {lat: self.latitude, lon: self.longitude})
+    end
 
 end

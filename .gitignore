@@ -36,3 +36,6 @@ sample_code.rb
 /solr/default/data/*
 /solr/development/data/*
 /solr/test/data/*
+
+# Ignore application configuration
+/config/application.yml
