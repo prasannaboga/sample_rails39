@@ -26,6 +26,13 @@
 
 Rails.application.routes.draw do
   devise_for :users
+
+  resources :profiles do
+      member do
+          get 'avatar1'
+      end
+  end
+
   get 'home/index'
   root 'home#index'
 end

@@ -19,6 +19,8 @@ class Profile < ApplicationRecord
 
     belongs_to :user
 
+    has_one_attached :avatar
+
     searchable do
         text :first_name, :last_name, :full_name
         text :email do
