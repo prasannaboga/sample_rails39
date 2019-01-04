@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_08_054000) do
+ActiveRecord::Schema.define(version: 2018_12_25_062244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,24 @@ ActiveRecord::Schema.define(version: 2018_12_08_054000) do
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
+  create_table "articles", force: :cascade do |t|
+    t.string "title"
+    t.text "post"
+    t.integer "comments_count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "lock_version", default: 0, null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "article_id"
+    t.string "subject"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_comments_on_article_id"
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.bigint "user_id"
     t.string "first_name"
@@ -40,11 +58,6 @@ ActiveRecord::Schema.define(version: 2018_12_08_054000) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
-  end
-
-  create_table "testing_table", id: false, force: :cascade do |t|
-    t.string "settings_name", limit: 140
-    t.json "settings_value"
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,8 +1,16 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 
-# Create users records
+Dir[File.join(Rails.root, 'db', 'seeds', '*.rb')].sort.each do |seed|
+    puts(seed)
+    load seed
+end
 
+
+=begin
+
+
+# Create users records
 User.destroy_all
 
 1_000.times do |i|
@@ -61,3 +69,4 @@ User.destroy_all
         puts(ex.backtrace)
     end
 end
+=end
