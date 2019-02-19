@@ -1,4 +1,4 @@
 = image_tag @profile.avatar
 = @profile.avatar.filename
 = url_for(@profile.avatar)
-
+= image_tag @profile.avatar.variant(resize: "500x100")
